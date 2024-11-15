@@ -43,9 +43,9 @@ def login():
     if not content:
         return jsonify({"success": False, "error": "Did not specify json body"}), 400
     elif "username" not in content:
-        return jsonify({"success": False, "error": "Username field not present"}), 403
+        return jsonify({"success": False, "error": "username field not present"}), 403
     elif "password" not in content:
-        return jsonify({"success": False, "error": "Password field not present"}), 403
+        return jsonify({"success": False, "error": "password field not present"}), 403
 
     username, password = content["username"], password_util.hash_password(content["password"])
 
