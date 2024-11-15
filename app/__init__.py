@@ -3,4 +3,4 @@ import os
 
 app = Flask(__name__, template_folder=os.path.abspath(__file__ + "/../templates"), static_folder=os.path.abspath(__file__ + "/../static"))
 
-from app.views import main_routes, login_signup_routes
+from app.views import main_routes, login_signup_routes, leaderboard_routes

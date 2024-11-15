@@ -9,6 +9,7 @@ client = pymongo.MongoClient(f"mongodb+srv://{os.getenv('MONGO_USERNAME')}:{os.g
 db = client["dev"]
 
 users = db["users"]
+leaderboard = db["leaderboard"]
 
 SALT = os.getenv("SALT")
 

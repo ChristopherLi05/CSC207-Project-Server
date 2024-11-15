@@ -22,8 +22,8 @@ class SessionManager:
         self.active_sessions[session_id] = Session(username, session_id)
         return session_id
 
-    def does_session_exist(self, session_id):
-        return session_id in self.active_sessions
+    def get_session(self, session_id):
+        return self.active_sessions.get(session_id)
 
     def clean_sessions(self):
         to_remove = []
@@ -40,4 +40,4 @@ class SessionManager:
 
 
 def generate_session_id(username):
-    return username + "".join(random.choices("abcdefghijklmnopqrstuvwxyz", k=10))
+    return username + "".join(random.choices("abcdefghijklmnopqrstuvwxyz", k=16))
