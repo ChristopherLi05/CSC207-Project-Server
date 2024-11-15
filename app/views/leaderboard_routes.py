@@ -33,3 +33,22 @@ def update_score():
         database_util.update_score_leaderboard(username, score)
 
     return jsonify({"success": True, "best_score": max(score, current_score)}), 200
+
+
+@app.route("/api/v1/best_score", methods=["POST"])
+def best_score():
+    content = request.json
+    if not content:
+        return jsonify({"success": False, "error": "Did not specify json body"}), 400
+    elif "session_id" not in content:
+        return jsonify({"success": False, "error": "session_id id field not present"}), 403
+
+    session_id = content["session_id"]
+    session = config.session_manager.get_session(session_id)
+
+    if not session:
+        return jsonify({"success": False, "error": "There are no active sessions associated with session_id"}), 403
+
+    username = session.username
+
+    return jsonify({"success": True, "best_score": database_util.get_score_leaderboard(username)}), 200
