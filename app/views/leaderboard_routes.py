@@ -5,7 +5,7 @@ from app.util import database_util as database_util
 
 @app.route("/api/v1/leaderboard", methods=["GET"])
 def leaderboard():
-    return database_util.get_top10_leaderboard()
+    return jsonify({"success": True, "leaderboard": database_util.get_top10_leaderboard()})
 
 
 @app.route("/api/v1/update_score", methods=["POST"])
