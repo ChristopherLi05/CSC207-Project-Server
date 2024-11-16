@@ -5,7 +5,7 @@ import re
 
 
 def is_username_valid(username):
-    return re.fullmatch(r"\s{3,16}", username)
+    return re.fullmatch(r"\w{3,16}", username)
 
 
 def is_password_valid(password):
