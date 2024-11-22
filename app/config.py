@@ -10,7 +10,9 @@ db = client["dev"]
 
 users = db["users"]
 leaderboard = db["leaderboard"]
+sessions = db["sessions"]
 
 SALT = os.getenv("SALT")
 
-session_manager = session.SessionManager()
+# session_manager = session.SessionManager(sessions)
+session_manager = session.DBSessionManager(sessions)
