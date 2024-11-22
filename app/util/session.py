@@ -59,7 +59,7 @@ class DBSessionManager:
         return Session(s["username"], s["session_id"])
 
     def clean_sessions(self):
-        self.session_db.delete_many({"value": {"$lt", time.time() - self.timeout}})
+        self.session_db.delete_many({"last_interacted": {"$lt": time.time() - self.timeout}})
 
     def update_session(self, session_id):
         self.session_db.update_one({"session_id": session_id}, {"$set": {"last_interacted": time.time()}})
