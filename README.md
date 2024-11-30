@@ -21,7 +21,7 @@ Allows a new user to create an account by providing a username and password.
 
 Content-Type: `application/json`
 Body:
-```json
+```
 {
     "username": "string",
     "password": "string"
@@ -30,7 +30,7 @@ Body:
 **Response Format:**
 
 **Success (200 OK):**
-```json
+```
 {
     "success": true
 }
@@ -38,22 +38,22 @@ Body:
 
 **Error:**
 * 400 Bad Request: Missing request body.
-```json
+```
 {
     "success": false,
-    "error": "Did not specify json body"
+    "error": "Did not specify  body"
 }
 ```
 
 * 403 Forbidden: Username or password not provided.
-```json
+```
 {
     "success": false,
     "error": "Username field not present"
 }
 ```
 
-```json
+```
 {
     "success": false,
     "error": "Password field not present"
@@ -61,14 +61,14 @@ Body:
 ```
 
 * 403 Forbidden: Invalid username or password.
-```json
+```
 {
     "success": false,
     "error": "Username is not valid"
 }
 ```
 
-```json
+```
 {
     "success": false,
     "error": "Password is not valid"
@@ -76,7 +76,7 @@ Body:
 ```
 
 * 403 Forbidden: Username already exists.
-```json
+```
 {
     "success": false,
     "error": "Username already exists"
@@ -97,7 +97,7 @@ Authenticates a user with their username and password.
 **Request Format:**
 Content-Type: `application/json`
 Body:
-```json
+```
 {
     "username": "string",
     "password": "string"
@@ -107,7 +107,7 @@ Body:
 **Response Format:**
 
 **Success (200 OK):**
-```json
+```
 {
     "success": true,
     "session_id": "string"
@@ -117,7 +117,7 @@ Body:
 **Error:**
 
 * 400 Bad Request: Missing request body.
-```json
+```
 {
     "success": false,
     "error": "Did not specify json body"
@@ -125,13 +125,13 @@ Body:
 ```
 
 * 403 Forbidden: Username or password not provided.
-```json
+```
 {
     "success": false,
     "error": "username field not present"
 }
 ```
-```json
+```
 {
     "success": false,
     "error": "password field not present"
@@ -139,7 +139,7 @@ Body:
 ```
 
 * 401 Unauthorized: Username and password do not match.
-```json
+```
 {
     "success": false,
     "error": "Username and Password do not match"
@@ -159,7 +159,7 @@ No parameters required.
 **Response Format:**
 
 **Success (200 OK):**
-```json
+```
 {
     "success": true,
     "leaderboard": [
@@ -179,7 +179,7 @@ Updates the user's score if the new score is higher than the current best.
 **Request Format:**
 Content-Type: `application/json`
 Body:
-```json
+```
 {
     "session_id": "string",
     "score": int
@@ -189,7 +189,7 @@ Body:
 **Response Format:**
 
 **Success (200 OK):**
-```json
+```
 {
     "success": true,
     "best_score": int
@@ -198,7 +198,7 @@ Body:
 
 **Error:**
 * 400 Bad Request: Missing request body.
-```json
+```
 {
     "success": false,
     "error": "Did not specify json body"
@@ -206,26 +206,26 @@ Body:
 ```
 
 * 403 Forbidden: Missing or invalid fields.
-```json
+```
 {
     "success": false,
     "error": "session_id id field not present"
 }
 ```
-```json
+```
 {
     "success": false,
     "error": "score field not present"
 }
 ```
-```json
+```
 {
     "success": false,
     "error": "score field is not an integer"
 }
 ```
 * 403 Forbidden: Invalid or expired session.
-```json
+```
 {
     "success": false,
     "error": "There are no active sessions associated with session_id"
@@ -245,7 +245,7 @@ Retrieves the best score of the user associated with the session ID.
 **Request Format:**
 Content-Type: `application/json`
 Body:
-```json
+```
 {
     "session_id": "string"
 }
@@ -254,7 +254,7 @@ Body:
 **Response Format:**
 
 **Success (200 OK):**
-```json
+```
 {
     "success": true,
     "best_score": int
@@ -263,21 +263,21 @@ Body:
 
 **Error:**
 * 400 Bad Request: Missing request body.
-```json
+```
 {
     "success": false,
     "error": "Did not specify json body"
 }
 ```
 * 403 Forbidden: Missing or invalid session ID.
-```json
+```
 {
     "success": false,
     "error": "session_id id field not present"
 }
 ```
 * 403 Forbidden: Invalid or expired session.
-```json
+```
 {
     "success": false,
     "error": "There are no active sessions associated with session_id"
